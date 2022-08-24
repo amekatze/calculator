@@ -15,13 +15,23 @@ body{
 }
 
 .calc-display{
+    display: grid;
+    grid-row: 1fr 1fr;
     background-color: rgb(223, 233, 211);
-    height: 2em;
+    height: 2.5em;
     margin-bottom: 0.5em;
     font-family: monospace;
     font-size: 2em;
-    padding: 10px;
+    padding: 15px;
     border-radius: 0.3em;
+}
+
+.calc-upper{
+    margin-top: -10px;
+    height: 1.4em;
+}
+.calc-lower {
+    font-size: 1.6em;
 }
 
 .calc-numberpad {
