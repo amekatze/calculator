@@ -1,0 +1,27 @@
+body{
+    height: 50em;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+}
+
+.calc-body{
+    background-color: rgb(75, 73, 82);
+    height: fit-content;
+    width: 15em;
+    padding: 15px;
+}
+
+.calc-display{
+    background-color: rgb(223, 233, 211);
+    width: 100%;
+    height: 10vh;
+    margin-bottom: 0.5em;
+}
+
+.calc-numberpad {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
