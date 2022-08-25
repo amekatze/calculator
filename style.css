@@ -106,13 +106,13 @@ button:hover{
 }
 
 .header:before{
-    content: 'Feed me your math trash!';
+    content: 'Feed me your math trash! Hit CLEAR or DEL.';
     position: absolute;
-    width: 20em;
+    width: 30em;
     font-family: monospace;
     font-size: 0.3em;
     top: 110px;
-    left: 150px;
+    left: 60px;
 }
 
 .header:after{
