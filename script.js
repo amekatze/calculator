@@ -46,12 +46,14 @@ function clear(){
     display.innerHTML = '';
     input = '';
     operator = '';
+    munchMonster();
 };
 
 numberButtons.forEach(button => {
     button.onclick = function(){ 
         input += button.textContent;
         inputDisplay.innerHTML = input;
+        idleMonster()
     }})
 
 operatorButtons.forEach(button => {
@@ -69,7 +71,8 @@ operatorButtons.forEach(button => {
         log = operate() + operator;
         operator = button.textContent;
         x = log;
-    } displayRefresh();   
+    } displayRefresh(); 
+    idleMonster()
     }
 })
      
@@ -89,12 +92,23 @@ decimalButton.onclick = function() {
     else if (input == '') input = '0.';
     else input += '.';
     inputDisplay.innerHTML = input;
+    idleMonster()
 }
 
 delButton.onclick = function(){
     input = input.slice(0,-1);
     inputDisplay.innerHTML = input;
-    console.log(input)
+    munchMonster();
 }
 
 clearButton.addEventListener('click', clear);
+
+function munchMonster(){
+    document.querySelector('.closed-eye').style.setProperty('visibility', 'visible');
+    document.querySelector('.bubble').style.setProperty('visibility', 'visible');
+}
+
+function idleMonster(){
+    document.querySelector('.closed-eye').style.setProperty('visibility', 'hidden');
+    document.querySelector('.bubble').style.setProperty('visibility', 'hidden');
+}
