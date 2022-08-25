@@ -10,6 +10,10 @@ const display = document.querySelector('.calc-upper');
 const numberButtons = document.querySelectorAll('#number');
 const operatorButtons = document.querySelectorAll('#operator');
 const equalButton = document.getElementById('equal');
+const decimalButton = document.getElementById('decimal');
+const clearButton = document.getElementById('clear');
+const delButton = document.getElementById('del');
+
 
 function operate(){
  switch (operator){
@@ -19,7 +23,7 @@ function operate(){
     case '-':
         return x-y;
         break;
-    case '*':
+    case 'x':
         return x*y;
         break;
     case '/':
@@ -30,49 +34,67 @@ function operate(){
         break;
  } 
 }
+
+function displayRefresh(){
+    inputDisplay.innerHTML = input; 
+    display.innerHTML = log;
+    input = '';
+}
  
 function clear(){
     inputDisplay.innerHTML = '';
     display.innerHTML = '';
+    input = '';
+    operator = '';
 };
 
 numberButtons.forEach(button => {
     button.onclick = function(){ 
         input += button.textContent;
         inputDisplay.innerHTML = input;
-        console.log(input)
     }})
 
 operatorButtons.forEach(button => {
     button.onclick = function(){ 
-    if (operator == ''){
-        console.log('hi');
+    if (input == ''){
+        x = 0;
+        operator = button.textContent;
+        log = x + operator;
+    } else if (operator == ''){
         x = parseFloat(input);
         operator = button.textContent;
-        display.innerHTML = x + operator;
-        inputDisplay.innerHTML = '';
-        input = ''; 
-    } else if (input == ''){
-        operator = button.textContent;
-        display.innerHTML = x + operator;
+        log = x + operator;
     } else {
         y = parseFloat(input);
-        log = operate();
-        inputDisplay.innerHTML = '';
+        log = operate() + operator;
         operator = button.textContent;
-        display.innerHTML = log + operator;
-        input = '';
         x = log;
-    } 
-    console.log(x,operator,y)
-    }})
+    } displayRefresh();   
+    }
+})
      
 equalButton.onclick = function() {
+    if(operator != '' && input != ''){
     y = parseFloat(input);
     log = x + operator + y;
     input = operate();
+    operator = '';
     display.innerHTML = log;
     inputDisplay.innerHTML = input;
-    operator = '';
+} return
 }
 
+decimalButton.onclick = function() {
+    if (input.toString().includes('.')) return;
+    else if (input == '') input = '0.';
+    else input += '.';
+    inputDisplay.innerHTML = input;
+}
+
+delButton.onclick = function(){
+    input = input.slice(0,-1);
+    inputDisplay.innerHTML = input;
+    console.log(input)
+}
+
+clearButton.addEventListener('click', clear);
