@@ -27,6 +27,7 @@ function operate(){
         return x*y;
         break;
     case '/':
+        if (y == 0){return 'No dividing by zero! Bad!'}
         return x/y;
         break;
     case '%':
@@ -104,11 +105,11 @@ delButton.onclick = function(){
 clearButton.addEventListener('click', clear);
 
 function munchMonster(){
-    document.querySelector('.closed-eye').style.setProperty('visibility', 'visible');
+    document.querySelector('.closing-eyes').style.setProperty('visibility', 'visible');
     document.querySelector('.bubble').style.setProperty('visibility', 'visible');
 }
 
 function idleMonster(){
-    document.querySelector('.closed-eye').style.setProperty('visibility', 'hidden');
+    document.querySelector('.closing-eyes').style.setProperty('visibility', 'hidden');
     document.querySelector('.bubble').style.setProperty('visibility', 'hidden');
 }
